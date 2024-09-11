@@ -5,10 +5,12 @@ import Greeting from "./Greeting.jsx";
 import Item from "./Food.jsx";
 import "./index.css";
 import PackingList from "./Food.jsx";
+import FeedbackForm from "./Practice.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Greeting />
     <PackingList/>
+    <FeedbackForm/>
   </StrictMode>,
 );
