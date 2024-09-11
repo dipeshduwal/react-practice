@@ -1,41 +1,41 @@
-function FirstName() {
-    const [value, setValue] = useState("");
-  
-    return (
-      <input
-        type="text"
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      />
-
-    );
-  }
-
-  function LastName() {
-    const [value, setValue] = useState("");
-  
-    return (
-      <input
-        type="text"
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-      />
-
-    );
-  }
+import { useState } from 'react'
 
 export default function Person() {
-    const [person, setPerson] = useState({ fullname , age });
+    const [person, setPerson] = useState('');
+    const [firstName, setFirstName]= useState('');
+    const [lastName, setLastName] = useState('');
     
-    const handleName = () => {
-        setName((fullname) => ({ ...fullname, name: {FirstName} + {LastName}}));
-    };
+    function handleFirstNameChange(e) {
+        setFirstName(e.target.value);
+        setPerson(e.target.value + ' ' +lastName);
+    }
+
+    function handleLastNameChange(e){
+        setLastName(e.target.value);
+        setPerson(firstName + ' ' + e.target.value)
+    }
 
     return (
       <>
-        <h1>{person.fullname}</h1>
-        <h2>{person.age}</h2>
-        <button onClick={handleIncreaseAge}>Increase age</button>
+        <h1>
+        <label>
+        First name:{' '}
+        <input
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
+      </label>
+      <label>
+        Last name:{' '}
+        <input
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
+      </label>
+      <p>
+        Your ticket will be issued to: <b>{person}</b>
+      </p>
+        </h1>
       </>
     );
   }
